@@ -4,14 +4,14 @@ using UnityEngine;
 class Patient : MonoBehaviour {
     // patient class has list of sensors, the wound, and a starting health of 100
 
-    public Patient(List<Sensor> sensors, Wound wound) {
+    /*public Patient(List<Sensor> sensors, Wound wound) {
         this.sensors = sensors;
         this.wound = wound;
         this.health = 100;
-    }
+    }*/
 
-    List<Sensor> sensors;
-    Wound wound;
+    public List<Sensor> sensors;
+    public Wound wound;
     public float health;
 
     public string healthStatus;
@@ -19,6 +19,7 @@ class Patient : MonoBehaviour {
     public string painStatus;
 
     public string bloodStatus;
+    public Animator Animator;
 
     void FixedUpdate() {
 
@@ -49,7 +50,7 @@ class Patient : MonoBehaviour {
         float pain = getPain();
 
         if (pain < 0) {
-            painstatus = "Low Pressure";
+            painStatus = "Low Pressure";
         }
         else if (healthStatus == "Deadly Wounded") {
             painStatus = "Dying";

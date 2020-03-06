@@ -1,4 +1,6 @@
-class Wound {
+using UnityEngine;
+
+class Wound : MonoBehaviour {
     // has location (selected in start menu), pain multiplier (worse wounds = more pain), and blood multiplier (worse wounds = higher blood loss rate)
 
     public Wound(string loc, float blood, float pain) {
