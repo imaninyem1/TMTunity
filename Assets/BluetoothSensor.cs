@@ -35,7 +35,7 @@ public class BluetoothSensor : MonoBehaviour
                 pressure_value = 0.1f;
             }
 
-            yield return new WaitForSeconds(1f); //time for new data in csv file to read
+            yield return new WaitForSeconds(0.2f); //time for new data in csv file to read
         }
     }
 

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-class Patient : MonoBehaviour {
+public class Patient : MonoBehaviour {
     // patient class has list of sensors, the wound, and a starting health of 100
 
     /*public Patient(List<Sensor> sensors, Wound wound) {
@@ -10,8 +10,8 @@ class Patient : MonoBehaviour {
         this.health = 100;
     }*/
 
-    public List<Sensor> sensors;
-    public Wound wound;
+    [SerializeField] private List<Sensor> sensors;
+    [SerializeField] private Wound wound;
     public float health;
 
     public string healthStatus;
@@ -19,7 +19,6 @@ class Patient : MonoBehaviour {
     public string painStatus;
 
     public string bloodStatus;
-    public Animator Animator;
 
     void FixedUpdate() {
 
@@ -47,9 +46,9 @@ class Patient : MonoBehaviour {
         }
 
         // if statement to trigger Kaila's animations
-        float pain = getPain();
-
-        if (pain < 0) {
+       /* float pain = getPain();
+        
+        if (pain < 0) { 
             painStatus = "Low Pressure";
         }
         else if (healthStatus == "Deadly Wounded") {
@@ -61,6 +60,7 @@ class Patient : MonoBehaviour {
         else {
             painStatus = "Stable Animation";
         }
+        */
 
         // if statement to trigger Imani's bleeding visuals
         float bloodLoss = getBloodLoss();
