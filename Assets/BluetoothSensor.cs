@@ -4,6 +4,8 @@ using UnityEngine;
 public class BluetoothSensor : MonoBehaviour
 {
     public float pressure_value;
+    public bool _override;
+    public float override_value;
     string[] data;
 
     // Start is called before the first frame update
@@ -27,7 +29,10 @@ public class BluetoothSensor : MonoBehaviour
     {   
         for (int i = 1; i < data.Length; i++) {
             string[] row = data[i].Split(new char[] {','});
-            Debug.Log(row[0]);
+            if (!_override)
+            {
+                Debug.Log(row[0]);
+            }
             pressure_value = float.Parse(row[0]);
 
             // fixes divison by 0 error
@@ -40,6 +45,12 @@ public class BluetoothSensor : MonoBehaviour
     }
 
     public float getPressure() {
+        if (_override) 
+        {
+            Debug.Log(override_value);
+            return override_value;
+        }
         return pressure_value;
+        
     }
 }
