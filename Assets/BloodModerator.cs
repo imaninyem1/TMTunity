@@ -7,29 +7,26 @@ class BloodModerator : MonoBehaviour
     public Patient patient;
     public ObiEmitter emitter;
 
-    void FixedUpdate()
+    void Update()
     {
     // if statement to trigger Imani's bleeding visuals
-        string bloodStatus = patient.bloodStatus;
+        string healthStatus = patient.healthStatus;
 
-        switch (bloodStatus)
+        switch (healthStatus)
         {
-            case "Heaviest Bleeding":
+            case "Stable Wounded":
                 emitter.NumParticles = 3000;
                 break;
-            case "Heavy Bleeding":
+            case "Moderately Wounded":
                 emitter.NumParticles = 2000;
                 break;
-            case "Moderate Bleeding":
+            case "Severly Wounded":
                 emitter.NumParticles = 1500;
                 break;
-            case "Low Bleeding":
+            case "Deadly Wounded":
                 emitter.NumParticles = 650;
                 break;
-            case "Lowest Bleeding":
-                emitter.NumParticles = 250;
-                break;
-            case "No Bleeding":
+            case "Dead":
                 emitter.NumParticles = 50;
                 break;
         }

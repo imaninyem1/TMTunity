@@ -63,25 +63,25 @@ public class Patient : MonoBehaviour {
         */
 
         // if statement to trigger Imani's bleeding visuals
-        float bloodLoss = getBloodLoss();
-        if (bloodLoss <= 1 && bloodLoss > 0.8) {
-            bloodStatus = "Heaviest Bleeding";
-        }
-        else if (bloodLoss <= 0.8 && bloodLoss > 0.6) {
-            bloodStatus = "Heavy Bleeding";
-        }
-        else if (bloodLoss <= 0.6 && bloodLoss > 0.4) {
-            bloodStatus = "Moderate Bleeding";
-        }
-        else if (bloodLoss <= 0.4 && bloodLoss > 0.2) {
-            bloodStatus = "Low Bleeding";
-        }
-        else if (bloodLoss <= 0.2 && bloodLoss > 0) {
-            bloodStatus = "Lowest Bleeding";
-        }
-        else {
-            bloodStatus = "No Bleeding";
-        }
+        //float bloodLoss = getBloodLoss();
+        //if (bloodLoss <= 1 && bloodLoss > 0.8) {
+        //    bloodStatus = "Heaviest Bleeding";
+        //}
+        //else if (bloodLoss <= 0.8 && bloodLoss > 0.6) {
+        //    bloodStatus = "Heavy Bleeding";
+        //}
+        //else if (bloodLoss <= 0.6 && bloodLoss > 0.4) {
+        //    bloodStatus = "Moderate Bleeding";
+        //}
+        //else if (bloodLoss <= 0.4 && bloodLoss > 0.2) {
+        //    bloodStatus = "Low Bleeding";
+        //}
+        //else if (bloodLoss <= 0.2 && bloodLoss > 0) {
+        //    bloodStatus = "Lowest Bleeding";
+        //}
+        //else {
+        //    bloodStatus = "No Bleeding";
+        //}
     }
     public float getPain() {
         // gets pain value by calculating pain from each sensor
