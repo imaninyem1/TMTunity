@@ -6,7 +6,11 @@ public class SoldierAnimations : MonoBehaviour {
 
     public Animator animator;
     public Patient patient; //reference to Patient script in scene
-
+    public AudioSource stableWounded;
+    public AudioSource moderatelyWounded;
+    public AudioSource severelyWounded;
+    public AudioSource deadlyWounded;
+    public AudioSource dead;
     //float painStatus; 
     
     // Update is called once per frame
@@ -14,6 +18,30 @@ public class SoldierAnimations : MonoBehaviour {
         /*animator.SetInteger("painStatus", gameObject.GetComponent<Patient>().getPain());*/
         string painStatus = patient.healthStatus;
         animator = gameObject.GetComponent<Animator>();
+
+
+        float health = patient.health;
+        if (health <= 100 && health > 75) {
+            animator.SetInteger("painStatus", 0);  
+            stableWounded.Play(0); //play audio
+        }
+        else if (health <= 75 && health > 50) {
+            animator.SetInteger("painStatus", 1);
+            moderatelyWounded.Play(0);
+        }
+        else if (health <= 50 && health > 25) {
+            animator.SetInteger("painStatus", 2);
+            severelyWounded.Play(0);
+        }
+        else if (health <= 25 && health > 0) {
+            animator.SetInteger("painStatus", 3); 
+            deadlyWounded.Play(0);
+        }
+        else {
+            animator.SetInteger("painStatus", 4);
+            dead.Play(0)
+        }
+        
         /* switch (painStatus) {
              case "Stable Wounded":
                  animator.SetInteger("painStatus", 0);
@@ -39,24 +67,6 @@ public class SoldierAnimations : MonoBehaviour {
                  animator.SetInteger("painStatus", 0);
                  break;
          }*/
-
-        float health = patient.health;
-        if (health <= 100 && health > 75) {
-            animator.SetInteger("painStatus", 0);  
-        }
-        else if (health <= 75 && health > 50) {
-            animator.SetInteger("painStatus", 1);
-        }
-        else if (health <= 50 && health > 25) {
-            animator.SetInteger("painStatus", 2);
-        }
-        else if (health <= 25 && health > 0) {
-            animator.SetInteger("painStatus", 3); 
-        }
-        else {
-            animator.SetInteger("painStatus", 4);
-        }
-
         /*        switch (painStatus) {
                     case "Low Pressure":
                         animator.SetInteger("painStatus", 0);
