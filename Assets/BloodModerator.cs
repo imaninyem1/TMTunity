@@ -15,16 +15,16 @@ class BloodModerator : MonoBehaviour
         switch (healthStatus)
         {
             case "Stable Wounded":
-                emitter.NumParticles = 3000;
+                emitter.NumParticles = 500;
                 break;
             case "Moderately Wounded":
-                emitter.NumParticles = 2000;
+                emitter.NumParticles = 750;
                 break;
             case "Severly Wounded":
-                emitter.NumParticles = 1500;
+                emitter.NumParticles = 1000;
                 break;
             case "Deadly Wounded":
-                emitter.NumParticles = 650;
+                emitter.NumParticles = 500;
                 break;
             case "Dead":
                 emitter.NumParticles = 50;

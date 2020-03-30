@@ -39,7 +39,7 @@ public class SoldierAnimations : MonoBehaviour {
         }
         else {
             animator.SetInteger("painStatus", 4);
-            dead.Play(0)
+            dead.Play(0);
         }
         
         /* switch (painStatus) {
