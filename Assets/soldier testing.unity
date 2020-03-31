@@ -96,7 +96,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -182,7 +181,6 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5066,36 +5064,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emitter: {fileID: 1296474295}
   color: {r: 1, g: 1, b: 1, a: 1}
-  particleSize: 0.07071068
+  particleSize: 0.07937005
   distribution:
   - position: {x: -0.35, y: 0, z: 0}
     velocity: {x: 0, y: 0, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-  - position: {x: -0.2792893, y: 0, z: 0}
+  - position: {x: -0.27062994, y: 0, z: 0}
     velocity: {x: 0, y: 0, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-  - position: {x: -0.20857863, y: 0, z: 0}
+  - position: {x: -0.19125989, y: 0, z: 0}
     velocity: {x: 0, y: 0, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-  - position: {x: -0.13786796, y: 0, z: 0}
+  - position: {x: -0.11188984, y: 0, z: 0}
     velocity: {x: 0, y: 0, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-  - position: {x: -0.06715727, y: 0, z: 0}
+  - position: {x: -0.032519788, y: 0, z: 0}
     velocity: {x: 0, y: 0, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-  - position: {x: 0.0035534129, y: 0, z: 0}
+  - position: {x: 0.046850264, y: 0, z: 0}
     velocity: {x: 0, y: 0, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-  - position: {x: 0.074264094, y: 0, z: 0}
+  - position: {x: 0.12622032, y: 0, z: 0}
     velocity: {x: 0, y: 0, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-  - position: {x: 0.14497477, y: 0, z: 0}
+  - position: {x: 0.20559037, y: 0, z: 0}
     velocity: {x: 0, y: 0, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-  - position: {x: 0.21568546, y: 0, z: 0}
-    velocity: {x: 0, y: 0, z: 1}
-    color: {r: 1, g: 1, b: 1, a: 1}
-  - position: {x: 0.28639615, y: 0, z: 0}
+  - position: {x: 0.28496042, y: 0, z: 0}
     velocity: {x: 0, y: 0, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
   lenght: 0.7
@@ -8754,7 +8749,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9002,11 +8996,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1341728493}
   patient: {fileID: 1341728497}
-  stableWounded: {fileID: 0}
-  moderatelyWounded: {fileID: 0}
-  severelyWounded: {fileID: 0}
-  deadlyWounded: {fileID: 0}
-  dead: {fileID: 0}
+  stableWounded: {fileID: 1341728498}
+  moderatelyWounded: {fileID: 1341728500}
+  severelyWounded: {fileID: 1341728501}
+  deadlyWounded: {fileID: 1341728502}
+  dead: {fileID: 1341728503}
 --- !u!82 &1341728500
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9418,11 +9412,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6057140222963153312, guid: 3332633def1129a4bb3d4e7ae24d2d45,
+    - target: {fileID: -927199367670048503, guid: 3332633def1129a4bb3d4e7ae24d2d45,
         type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 85599dc6c79ed4de68305be290c1ba09, type: 2}
+      propertyPath: m_Name
+      value: Army3-final
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3332633def1129a4bb3d4e7ae24d2d45,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9478,11 +9472,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 3332633def1129a4bb3d4e7ae24d2d45,
+    - target: {fileID: -6057140222963153312, guid: 3332633def1129a4bb3d4e7ae24d2d45,
         type: 3}
-      propertyPath: m_Name
-      value: Army3-final
-      objectReference: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 85599dc6c79ed4de68305be290c1ba09, type: 2}
     - target: {fileID: 5252431679265451905, guid: 3332633def1129a4bb3d4e7ae24d2d45,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -9536,9 +9530,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011057531}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 9
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
