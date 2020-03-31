@@ -9,27 +9,30 @@ class BloodModerator : MonoBehaviour
 
     void Update()
     {
+        float bloodloss = patient.getBloodLoss();
+        emitter.speed = 0.5f * bloodloss;
     // if statement to trigger Imani's bleeding visuals
         string healthStatus = patient.healthStatus;
 
-        switch (healthStatus)
+        /*switch (healthStatus)
         {
             case "Stable Wounded":
-                emitter.NumParticles = 500;
+
+                emitter.speed = 0.5f;
                 break;
             case "Moderately Wounded":
-                emitter.NumParticles = 750;
+                emitter.speed = 0.4f;
                 break;
             case "Severly Wounded":
-                emitter.NumParticles = 1000;
+                emitter.speed = 0.3f;
                 break;
             case "Deadly Wounded":
-                emitter.NumParticles = 500;
+                emitter.speed = 0.2f;
                 break;
             case "Dead":
-                emitter.NumParticles = 50;
+                emitter.speed = 0.1f;
                 break;
-        }
+        }*/
     }
 
 }
