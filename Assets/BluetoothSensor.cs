@@ -45,12 +45,84 @@ public class BluetoothSensor : MonoBehaviour
     }
 
     public float getPressure() {
-        if (_override) 
+
+        if (Input.GetKey("q"))
         {
-            Debug.Log(override_value);
-            return override_value;
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Correct";
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.green;
+            return 70f;
         }
-        return pressure_value;
+
+        else if (Input.GetKey("w"))
+        {
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Incorrect";
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.red;
+            return 0f;
+        }
+
+        else if (Input.GetKey("e"))
+        {
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Incorrect";
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.red;
+            return 0f;
+        }
+
+        else if (Input.GetKey("a"))
+        {
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Incorrect";
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.red;
+            return 0f;
+        }
+
+        else if (Input.GetKey("s"))
+        {
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Incorrect";
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.red;
+            return 0f;
+        }
+
+        else if (Input.GetKey("d"))
+        {
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Incorrect";
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.red;
+            return 0f;
+        }
+
+        else if (Input.GetKey("z"))
+        {
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Incorrect";
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.red;
+            return 0f;
+        }
+
+        else if (Input.GetKey("x"))
+        {
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Incorrect";
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.red;
+            return 0f;
+        }
+
+        else if (Input.GetKey("c"))
+        {
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Incorrect";
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.red;
+            return 0f;
+        }
+
+        else 
+        {
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "No Pressure Applied";
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.black;
+            return 0f;
+        }
+
+        // if (_override) 
+        // {
+        //     Debug.Log(override_value);
+        //     return override_value;
+        // }
+
+        // return pressure_value;
         
     }
 }

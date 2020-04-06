@@ -10,7 +10,7 @@ class BloodModerator : MonoBehaviour
     void Update()
     {
         float bloodloss = patient.getBloodLoss();
-        emitter.speed = 0.5f * bloodloss;
+        emitter.speed = 0.25f * bloodloss;
     // if statement to trigger Imani's bleeding visuals
         string healthStatus = patient.healthStatus;
 
