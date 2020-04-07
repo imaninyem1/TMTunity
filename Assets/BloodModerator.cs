@@ -6,33 +6,37 @@ class BloodModerator : MonoBehaviour
 {
     public Patient patient;
     public ObiEmitter emitter;
+    public Material[] bloodyBodyArray;
+    private Material[] cleanBody;
 
-    void Update()
+    public void Start(){
+        cleanBody = GameObject.Find("Body").GetComponent<SkinnedMeshRenderer>().materials;      
+    }
+
+    public void Update()
     {
         float bloodloss = patient.getBloodLoss();
-        emitter.speed = 0.25f * bloodloss;
+        emitter.speed = 0.10f * bloodloss;
     // if statement to trigger Imani's bleeding visuals
         string healthStatus = patient.healthStatus;
 
-        /*switch (healthStatus)
+        switch (healthStatus)
         {
             case "Stable Wounded":
-
-                emitter.speed = 0.5f;
+                //GameObject.Find("Body").GetComponent<SkinnedMeshRenderer>().materials = cleanBody;
                 break;
             case "Moderately Wounded":
-                emitter.speed = 0.4f;
+                GameObject.Find("Body").GetComponent<SkinnedMeshRenderer>().materials = bloodyBodyArray;
                 break;
             case "Severly Wounded":
-                emitter.speed = 0.3f;
+                GameObject.Find("Body").GetComponent<SkinnedMeshRenderer>().materials = bloodyBodyArray;
                 break;
             case "Deadly Wounded":
-                emitter.speed = 0.2f;
                 break;
             case "Dead":
-                emitter.speed = 0.1f;
+             
                 break;
-        }*/
+        }
     }
 
 }
