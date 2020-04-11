@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SphereControl : MonoBehaviour
 {
-    public KeyCode key;
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -14,16 +14,15 @@ public class SphereControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(key)) 
+        if (Input.GetKey(KeyCode.Q)) 
         {
             print("hello");
             gameObject.SetActive(true);
         }
-
-        else if (Input.GetKeyUp(key))
-        {
-           gameObject.SetActive(false);
-        }
+        // if (Input.GetKeyUp(key))
+        // {
+        //    gameObject.SetActive(false);
+        // }
         
     }
 }
