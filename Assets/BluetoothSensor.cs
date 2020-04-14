@@ -44,13 +44,8 @@ public class BluetoothSensor : MonoBehaviour
         }
     }
 
-    public float getPressure() {
-        if (_override) 
-        {
-            Debug.Log(override_value);
-            return override_value;
-        }
-        return pressure_value;
-        
+    public float getPressure() 
+    {
+        return override_value;
     }
 }
