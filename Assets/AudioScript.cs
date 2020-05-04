@@ -7,6 +7,11 @@ public class AudioScript : MonoBehaviour {
 
     public Patient patient;
     public AudioClip[] clips; //array 
+    public AudioClip[] stableClips; 
+    public AudioClip[] moderateClips;
+    public AudioClip[] severeClips;
+    public AudioClip[] deadlyClips;
+    public AudioClip[] deadClips;
     public AudioMixerGroup output;
     public string prevStatus;
 
@@ -20,31 +25,26 @@ public class AudioScript : MonoBehaviour {
            if (healthStatus != prevStatus) {
                switch (healthStatus) {
                     case "Stable Wounded":
-                        PlaySound();
+                        PlaySound(stableClips);
                         break;
                     case "Moderately Wounded":
-                        PlaySound();
+                        PlaySound(moderateClips);
                         break;
                     case "Severly Wounded":
-                        PlaySound();
+                        PlaySound(severeClips);
                         break;
                     case "Deadly Wounded":
-                        PlaySound();
+                        PlaySound(deadlyClips);
                         break;
                     case "Dead":
-                        PlaySound();
+                        PlaySound(deadClips);
                         break;
                 }
            }
            prevStatus = healthStatus; 
-    
-
-        if (Input.GetKeyDown("space")) {
-            PlaySound(); 
-        }
     }
 
-       void PlaySound() {
+       void PlaySound(AudioClip[] clips) {
             //Randomize 
             int randomClip = Random.Range (0,clips.Length);
 
@@ -63,6 +63,6 @@ public class AudioScript : MonoBehaviour {
 
             //Destroy the AudioSource after length of audio clip is done playing
             Destroy(source, clips[randomClip].length);
-        }
+        }      
 
 }
