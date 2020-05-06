@@ -6,22 +6,30 @@ public class MousePressure : MonoBehaviour
 
 {   
     public Bar BarScript;
+    public GameObject Torniquet;
     public GameObject BG;
     public GameObject Bar;
     public GameObject SigPattern;
     public GameObject SigPattern_Zoomed;
     public GameObject ZoomedCamera;
+    public GameObject CorrectLocation;
     public float applytime = 3.0f;
     public float timer = 0f;
     public bool on_target;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.Find("DistanceText").GetComponent<Renderer>().enabled = true;
+        GameObject.Find("DistanceNumber").GetComponent<Renderer>().enabled = true;
         SigPattern.SetActive(false);
         SigPattern_Zoomed.SetActive(false);
-        GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Incorrect";
+        //GameObject.Find("indicator_zoom").SetActive(false);
+        GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Place Torniquet";
         GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.red;
+        //GameObject.Find("indicator_zoom").GetComponent<TextMesh>().text = "Place Torniquet";
+        //GameObject.Find("indicator_zoom").GetComponent<TextMesh>().color = Color.red;
         GameObject.Find("Army3-final").GetComponent<BluetoothSensor>().override_value = 0f;
     }
 
@@ -33,13 +41,26 @@ public class MousePressure : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             timer = 0f;
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Applying Torniquet...";
+            GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.yellow;
+            //GameObject.Find("indicator_zoom").GetComponent<TextMesh>().text = "Applying Torniquet...";
+            //GameObject.Find("indicator_zoom").GetComponent<TextMesh>().color = Color.yellow;
             BG.SetActive(true);
             SigPattern.SetActive(true);
+            BarScript.AnimateBar();
             if (ZoomedCamera.activeInHierarchy)
             {
                 SigPattern_Zoomed.SetActive(true);
+                //GameObject.Find("indicator_zoom").SetActive(true);
+                GameObject.Find("correct/incorrect").transform.localScale = new Vector3(0.05f, 0.05f, 0.1f);
+                GameObject.Find("correct/incorrect").transform.position = new Vector3(0.76f, -0.18f, -0.16f);
             }
-            BarScript.AnimateBar();
+            else if (!ZoomedCamera.activeInHierarchy)
+            {
+                GameObject.Find("correct/incorrect").transform.localScale = new Vector3(0.15f, 0.15f, 0.1f);
+                GameObject.Find("correct/incorrect").transform.position = new Vector3(-0.22f, -0.18f, -1.37f);
+            }
+
         }
 
         else if (Input.GetMouseButton(0))
@@ -47,8 +68,11 @@ public class MousePressure : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > applytime)
             {
-                GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Correct";
+                CorrectLocation.SetActive(true);
+                GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Torniquet Correctly Applied! Check wound.";
                 GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.green;
+                //GameObject.Find("indicator_zoom").GetComponent<TextMesh>().text = "Torniquet Correctly Applied! Check wound.";
+                //GameObject.Find("indicator_zoom").GetComponent<TextMesh>().color = Color.green;
                 GameObject.Find("Army3-final").GetComponent<BluetoothSensor>().override_value = 70f; 
             }
         }
@@ -57,8 +81,10 @@ public class MousePressure : MonoBehaviour
 
     void OnMouseExit()
     {
-        GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Incorrect";
+        GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Place Torniquet";
         GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.red;
+        //GameObject.Find("indicator_zoom").GetComponent<TextMesh>().text = "Place Torniquet";
+        //GameObject.Find("indicator_zoom").GetComponent<TextMesh>().color = Color.red;
         GameObject.Find("Army3-final").GetComponent<BluetoothSensor>().override_value = 0f;
         BarScript.bar_off();
         SigPattern.SetActive(false);
@@ -68,12 +94,25 @@ public class MousePressure : MonoBehaviour
 
     void Update()
     {
+        float distance = Vector3.Distance (Torniquet.transform.position, transform.position);
+        GameObject.Find("DistanceNumber").GetComponent<TextMesh>().text = distance.ToString();
+
         if (on_target == false)
             if (Input.GetMouseButtonDown(0))
             {
                 timer = 0f;
+                timer += Time.deltaTime;
                 BG.SetActive(true);
                 BarScript.AnimateBar();
+                GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Applying Torniquet...";
+                //GameObject.Find("indicator_zoom").GetComponent<TextMesh>().text = "Applying Torniquet...";
+                if (timer > applytime)
+                {
+                    GameObject.Find("correct/incorrect").GetComponent<TextMesh>().text = "Torniquet Incorrectly Applied. Check wound.";
+                    GameObject.Find("correct/incorrect").GetComponent<TextMesh>().color = Color.red;
+                    //GameObject.Find("indicator_zoom").GetComponent<TextMesh>().text = "Torniquet Incorrectly Applied. Check wound.";
+                    //GameObject.Find("indicator_zoom").GetComponent<TextMesh>().color = Color.red;
+                }
             }
             else if (Input.GetMouseButtonUp(0))
             {
