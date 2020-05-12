@@ -7,6 +7,8 @@ public class MousePressure : MonoBehaviour
 
 {   
     public Bar BarScript;
+    public StartMenu StartMenu;
+    public Patient Patient;
     public GameObject Torniquet;
     public GameObject BG;
     public GameObject Bar;
@@ -25,16 +27,18 @@ public class MousePressure : MonoBehaviour
     public GameObject stage3_sigpattern_zoomed;
     public GameObject stage4_sigpattern;
     public GameObject stage4_sigpattern_zoomed;
-    public float applytime = 4.0f;
+    public float applytime = 8.0f;
     public float timer = 0f;
+    public float total_timer = 0f;
+    public float end_timer = 0f;
     public bool on_target;
     
 
     // Start is called before the first frame update
     void Start()
+
     {
         SigPattern.SetActive(false);
-        CorrectLocation.SetActive(false);
         SigPattern_Zoomed.SetActive(false);
         GameObject.Find("correct/incorrect").GetComponent<Text>().text = "Place Torniquet";
         GameObject.Find("correct/incorrect").GetComponent<Text>().color = Color.red;
@@ -68,15 +72,15 @@ public class MousePressure : MonoBehaviour
                 {
                     SigPattern_Zoomed.SetActive(false);
                     stage1_sigpattern_zoomed.SetActive(true);
-                    if (timer >= 2f)
+                    if (timer >= 3f)
                     {
                         stage1_sigpattern_zoomed.SetActive(false);
                         stage2_sigpattern_zoomed.SetActive(true);
-                        if (timer >= 3f)
+                        if (timer >= 5f)
                         {
                             stage2_sigpattern_zoomed.SetActive(false);
                             stage3_sigpattern_zoomed.SetActive(true);
-                            if (timer >= 4f)
+                            if (timer >= 7f)
                             {
                                 stage3_sigpattern_zoomed.SetActive(false);
                                 stage4_sigpattern_zoomed.SetActive(true);
@@ -90,15 +94,15 @@ public class MousePressure : MonoBehaviour
             {
                SigPattern.SetActive(false);
                stage1_sigpattern.SetActive(true);
-               if (timer >= 2f)
+               if (timer >= 3f)
                {
                    stage1_sigpattern.SetActive(false);
                    stage2_sigpattern.SetActive(true);
-                   if (timer >= 3f)
+                   if (timer >= 5f)
                    {
                        stage2_sigpattern.SetActive(false);
                        stage3_sigpattern.SetActive(true);
-                       if (timer >= 4f)
+                       if (timer >= 7f)
                        {
                          stage3_sigpattern.SetActive(false);
                          stage4_sigpattern.SetActive(true);  
@@ -108,7 +112,7 @@ public class MousePressure : MonoBehaviour
                }
 
             }
-            if (timer > applytime)
+            if (stage4_sigpattern.activeInHierarchy || stage4_sigpattern_zoomed.activeInHierarchy)
             {
                 CorrectLocation.SetActive(true);
                 GameObject.Find("correct/incorrect").GetComponent<Text>().text = "Torniquet Correct";
@@ -140,6 +144,8 @@ public class MousePressure : MonoBehaviour
 
     void Update()
     {
+        total_timer += Time.deltaTime;
+
         float distance = Vector3.Distance(Torniquet.transform.position, transform.position);
         float distance1 = distance/0.02f;
         GameObject.Find("DistanceNumber").GetComponent<Text>().text = ((int) distance1).ToString();
@@ -151,24 +157,29 @@ public class MousePressure : MonoBehaviour
         if (on_target == false)
             if (Input.GetMouseButtonDown(0))
             {
-                timer = 0f;
-                timer += Time.deltaTime;
-                BG.SetActive(true);
-                BarScript.AnimateBar();
-                GameObject.Find("correct/incorrect").GetComponent<Text>().text = "Applying Torniquet...";
-                GameObject.Find("correct/incorrect").GetComponent<Text>().color = Color.yellow;
-                //print("on target false");
-                if (timer > applytime)
-                {
-                    GameObject.Find("correct/incorrect").GetComponent<Text>().text = "Torniquet Incorrect";
-                    GameObject.Find("correct/incorrect").GetComponent<Text>().color = Color.red;
-                }
+                
+                GameObject.Find("correct/incorrect").GetComponent<Text>().text = "Torniquet Incorrect";
+                GameObject.Find("correct/incorrect").GetComponent<Text>().color = Color.red;
+                
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                BarScript.bar_off();
+                GameObject.Find("correct/incorrect").GetComponent<Text>().text = "Place Torniquet";
+                GameObject.Find("correct/incorrect").GetComponent<Text>().color = Color.red;
             }
-
+        if (CorrectLocation.activeInHierarchy)
+        {
+            end_timer += Time.deltaTime;
+            GameObject.Find("Army3-final").GetComponent<BluetoothSensor>().override_value = 70f;
+            if (end_timer >= 5)
+            { 
+                StartMenu.ChangeScenetoResults();
+            }
+        }
+        if (Patient.health <= 0)
+        {
+            StartMenu.ChangeScenetoDied();
+        }
     }
            
 }
