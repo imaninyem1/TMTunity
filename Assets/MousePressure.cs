@@ -27,10 +27,13 @@ public class MousePressure : MonoBehaviour
     public GameObject stage3_sigpattern_zoomed;
     public GameObject stage4_sigpattern;
     public GameObject stage4_sigpattern_zoomed;
+<<<<<<< HEAD
     public GameObject FinishButton;
     public GameObject RetryButton;
     public GameObject CheckWoundText;
     public GameObject ZoomOutText;
+=======
+>>>>>>> b000dc568a7dd5e15d6e06694f18dd812fa25f60
     public float applytime = 8.0f;
     public float timer = 0f;
     public float total_timer = 0f;
@@ -154,11 +157,14 @@ public class MousePressure : MonoBehaviour
 
     void Update()
     {
+<<<<<<< HEAD
         if (training_UI = false)
         {
             correct_incorrect.SetActive(false);
         }
         
+=======
+>>>>>>> b000dc568a7dd5e15d6e06694f18dd812fa25f60
         total_timer += Time.deltaTime;
 
         float distance = Vector3.Distance(Torniquet.transform.position, transform.position);
@@ -184,6 +190,7 @@ public class MousePressure : MonoBehaviour
             }
         if (CorrectLocation.activeInHierarchy)
         {
+<<<<<<< HEAD
             //end_timer += Time.deltaTime;
             GameObject.Find("Army3-final").GetComponent<BluetoothSensor>().override_value = 70f;
             GameObject.Find("correct/incorrect").GetComponent<Text>().text = "Torniquet Correct";
@@ -192,15 +199,26 @@ public class MousePressure : MonoBehaviour
             RetryButton.SetActive(true);
             CheckWoundText.SetActive(true);
 
+=======
+            end_timer += Time.deltaTime;
+            GameObject.Find("Army3-final").GetComponent<BluetoothSensor>().override_value = 70f;
+            if (end_timer >= 5)
+            { 
+                StartMenu.ChangeScenetoResults();
+            }
+>>>>>>> b000dc568a7dd5e15d6e06694f18dd812fa25f60
         }
         if (Patient.health <= 0)
         {
             StartMenu.ChangeScenetoDied();
         }
+<<<<<<< HEAD
         if (ZoomedCamera.activeInHierarchy  || CorrectLocation.activeInHierarchy)
         {
             ZoomOutText.SetActive(true);
         }
+=======
+>>>>>>> b000dc568a7dd5e15d6e06694f18dd812fa25f60
     }
            
 }

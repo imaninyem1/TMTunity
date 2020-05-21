@@ -25,10 +25,13 @@ public class StartMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Dead");
     }
+<<<<<<< HEAD
 
     public void ChangeScenetoAbout()
     {
         SceneManager.LoadScene("About");
     }
 
+=======
+>>>>>>> b000dc568a7dd5e15d6e06694f18dd812fa25f60
 }

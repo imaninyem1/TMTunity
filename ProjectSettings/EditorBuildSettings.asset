@@ -20,7 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Dead.unity
     guid: 6a11fb73035525745bf5e4072887e0ae
+<<<<<<< HEAD
   - enabled: 1
     path: Assets/About.unity
     guid: 5e685436b77634df7a60493fe64ffdf9
+=======
+>>>>>>> b000dc568a7dd5e15d6e06694f18dd812fa25f60
   m_configObjects: {}
